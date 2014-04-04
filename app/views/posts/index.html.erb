@@ -1,0 +1,53 @@
+  
+
+    <div class="jumbotron">
+
+    <h1>BLOG</h1>
+    <p>Main Page</p>
+    <p id="notice"><%= notice%></p>
+    <p>
+     </a>
+    </p>
+    </div>
+    
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Date</th>
+      <th>Likes</th>
+
+
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, post %></td>
+        <td><%= post.text %></td>
+        <td><%= post.like %></td>
+        <td><%= post.created_at.to_date %></td>
+        <td><%= link_to 'Like', like_post_path(post),:class=>"btn btn-success" %></td>
+        <td ><%= link_to 'DisLike', dislike_post_path(post),:class=>"btn btn-danger" %></td>
+        
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'Administrative View', administrative_post_path ,:class => "btn btn-primary"%>
+<%= link_to 'Report View', report_post_path,:class => "btn btn-primary"  %>
+
+

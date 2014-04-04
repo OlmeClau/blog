@@ -1,0 +1,58 @@
+    <div  class="jumbotron">
+    <h1>BLOG</h1>
+    <p>Post View</p>
+    <p id="notice"><%= notice%></p>
+    <p>
+     </a>
+    </p>
+    </div>
+
+
+
+
+<p>
+ <h3> <strong>Title:</strong></h3>
+  <%= @post.title %>
+</p>
+
+<p>
+  <h3><strong>Text:</strong></h3>
+  <%= @post.text %>
+</p>
+<p>
+  <h3><strong>Likes:</strong></h3>
+  <%= @post.like %>
+</p>
+<h3><strong>Comentarios:</strong></h3>
+<% @post.comments.reverse.each do |comment| %>
+  
+
+  <div class="field">
+    <%= comment.body %><br>
+     <%= comment.created_at.to_date %><br>
+
+    
+  </div>
+ 
+<% end %>
+<%= form_for([@post,@post.comments.build]) do |f| %>
+  
+
+   
+  <div class="text-info">
+    <%= f.label "comment" %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Like', like_post_path(@post),:class=>"btn btn-success" %>
+<%= link_to 'Dislike', dislike_post_path(@post),:class=>"btn btn-danger" %>
+
+
+<%= link_to 'Edit', edit_post_path(@post),:class => "btn btn-primary" %> 
+<%= link_to 'Back', administrative_post_path,:class => "btn btn-primary" %>
+
+
