@@ -23,6 +23,10 @@
   <h3><strong>Likes:</strong></h3>
   <%= @post.like %>
 </p>
+<p>
+  <h3><strong>category:</strong></h3>
+  <%= @post.category %>
+</p>
 <h3><strong>Comentarios:</strong></h3>
 <% @post.comments.reverse.each do |comment| %>
   

@@ -19,6 +19,17 @@
     <%= submit_tag "search" %>
 </div>
 <%end%>
+<%= form_tag administrative_post_path, method: 'get' do%>
+<div class="field">
+   <h3 class = "text-info"> <%= label_tag "Buscar caterory" %></h3><br>
+    <%= text_field_tag :cate%>
+</div>
+<div class="actions">
+    <%= submit_tag "search category" %>
+</div>
+<%end%>
+
+
 
 
 <table class="table table-bordered">
@@ -28,6 +39,7 @@
       <th>Text</th>
       <th>Date</th>
       <th>Likes</th>
+      <th>category</th>
 
       
       <th></th>
@@ -42,6 +54,7 @@
         <td><%= post.text %></td>       
         <td><%= post.created_at.to_date %></td>
         <td><%= post.like %></td>
+        <td><%= post.category %></td>
         <td><%= link_to 'Show', post, :class=>"btn btn-mini" %></td>
         <td><%= link_to 'Edit', edit_post_path(post), :class=>"btn btn-mini" %></td>
         <td><%= link_to 'Destroy', post, :class=>"btn btn-mini", method: :delete, data: { confirm: 'Are you sure?' } %></td>

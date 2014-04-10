@@ -7,6 +7,7 @@
       <th>Title</th>
       <th>Created Date</th>
       <th>Updated Date</th>
+      <th>category</th>
       <th>Number Of Comments</th>
       <th>Number Of Likes</th>
       <th>Number Of Words</th>
@@ -21,6 +22,7 @@
         <td><%= post.title %></td>
         <td><%= post.created_at.to_date %></td>
         <td><%= post.updated_at.to_date %></td>
+        <td><%= post.category %></td>
         <td><%= post.comments.count %></td>
         <td><%= post.like %></td>
         <td><%= post.text.split(" ").count + post.title.split(" ").count%></td>

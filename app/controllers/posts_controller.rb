@@ -31,6 +31,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    #@post = HistoryPost.new(post_params)
+
    # @posts=Post.order("updated_at ASC")
 
     respond_to do |format|
@@ -75,9 +77,14 @@ class PostsController < ApplicationController
     if params[:search]
        @posts= Post.search(params[:search])
     else
+      if params[:cate]
+        @posts= Post.search(params[:cate])
+      else
 
        @posts= Post.all
-     end
+      end
+    end
+
   end
   def like_administrative
     @post.like+=1
@@ -89,7 +96,12 @@ class PostsController < ApplicationController
 
   end
   def dislike
+  if(@post.like>0)
     @post.like-=1
+  else
+    @post.like=0
+  end
+
     if @post.save
       redirect_to administrative_post_path, notice: 'no te ha gustado'
     else
@@ -109,6 +121,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :text)
+      params.require(:post).permit(:title, :text ,:category)
     end
 end

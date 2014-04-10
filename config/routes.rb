@@ -12,7 +12,7 @@ Blog::Application.routes.draw do
   get '/report'=> 'posts#report',:as =>'report_post'
   #get '/administrative/show_comment/:id'=> 'posts#show_comment',:as =>'comment_post'
   post '/posts/:id/comment'=>'comments#create', :as => 'post_comments'
-
+  post '/posts/new' => 'history_post#create'
   #post '/administrative/:word' => 'posts/search'
   
   root 'posts#index'
